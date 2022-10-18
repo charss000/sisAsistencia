@@ -1,0 +1,31 @@
+.titulo-asi{
+    background:#2A567A !important;
+     padding: 15px;
+     display: flex;
+     justify-content: space-between;
+     margin-top: 10px;
+     text-align: center;
+     list-style: none;
+}
+.titulo-asi > .title > a{
+    color: #fff;
+}
+.wrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 40px 0px;
+width: 100%;
+
+}
+.footer{
+    background:#C2B6D6 !important;  
+    padding: 25px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
