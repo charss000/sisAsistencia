@@ -27,12 +27,17 @@
 					
                 //aca se deve evaluar row de registros 
 				while ($row2 = $query2->fetch_assoc()){
-				$horaEn=$row2['HoraIn'];
-				$desde=$row2['plazo_int_ini'];
-				$hasta=$row2['plazo_int_fin'];
-				$horaSalida=$row2['HoraOunt'];
-				$SalidaAnti=$row2['plazo_out_ini'];
-				$hora_actual=$time = $timestamp->format('H:i:s'); 
+					$desde=$row2['plazo_int_ini'];
+					$SalidaAnti=$row2['plazo_out_ini'];
+					$hora_actual=$time = $timestamp->format('H:i:s'); 
+				 if($desde >= $hora_actual || $SalidaAnti >= $hora_actual ){
+					$desde=$row2['plazo_int_ini'];
+					$hasta=$row2['plazo_int_fin'];
+					$horaSalida=$row2['HoraOunt'];
+					$SalidaAnti=$row2['plazo_out_ini'];
+					$horaEn=$row2['HoraIn'];
+				 }
+				
 				}
 				if($query->num_rows>0){
 					
