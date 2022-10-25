@@ -1,9 +1,18 @@
-<?php session_start();?>
+
+<?php
+	require_once 'conn.php';
+	$sql = "SELECT concat (m.Nombres,' ', m.Apellidos) as nombres, s.DescripcionSede as sede, c.Descripcion as cargo FROM miembros AS m INNER JOIN cargo AS c ON m.cargo_idCargo = c.idCargo INNER JOIN sede AS s ON m.sede_idsede = s.idsede WHERE m.cargo_idCargo = 3";
+	$query = $conn->query($sql);
+	$row = $query->fetch_assoc();
+	$nombre = $row['nombres'];
+	$sede = $row['sede'];
+	$cargo= $row['cargo']
+?>
 <html>
     <head>
 	  <meta charset="utf-8">
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	  <title>EM | SEDE - TARMA</title>
+	  <title>EM | SEDE - <?php echo $sede ?></title>
 	  <!-- Tell the browser to be responsive to screen width -->
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -128,7 +137,7 @@
 			
 			 <nav aria-label="">
 				<ul class=" titulo-asi">
-					<li class="title"><a href="#">GESTIÓN DE ASISTENCIA DE RED ADMINISTRATIVA EM TARMA JUNIN V1.0 </a></li>
+					<li class="title"><a href="#">GESTIÓN DE ASISTENCIA DE RED ADMINISTRATIVA EM <?php echo $sede ?> V1.0 </a></li>
 					<li   class="title"><a href="registro.php" >Ver Registro</a></li>
 				</ul>
 			</nav>
@@ -141,7 +150,7 @@
 		 	
 		   <footer class="footer text-center">
 			<div class="col">
-				<p><small> CHARLY GABRIEL SAS SEDE TARMA - 2022 &copy; Derechos Reservados</small></p>
+				<p><small> <?php echo $nombre. " ". $cargo. " " . $sede; ?> - <?php echo  date("Y");?> &copy; Derechos Reservados</small></p>
 			</div>
 		</footer>	
 	</div>	

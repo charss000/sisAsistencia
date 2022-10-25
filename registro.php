@@ -1,9 +1,17 @@
-
+<?php
+	require_once 'conn.php';
+	$sql = "SELECT concat (m.Nombres,' ', m.Apellidos) as nombres, s.DescripcionSede as sede, c.Descripcion as cargo FROM miembros AS m INNER JOIN cargo AS c ON m.cargo_idCargo = c.idCargo INNER JOIN sede AS s ON m.sede_idsede = s.idsede WHERE m.cargo_idCargo = 3";
+	$query = $conn->query($sql);
+	$row = $query->fetch_assoc();
+	$nombre = $row['nombres'];
+	$sede = $row['sede'];
+	$cargo= $row['cargo']
+?>
 <html>
     <head>
 	  <meta charset="utf-8">
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	  <title>RA | Asistencia SEDE - TARMA</title>
+	  <title>RA | Asistencia SEDE - <?php echo $sede; ?></title>
 	  <!-- Tell the browser to be responsive to screen width -->
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 
